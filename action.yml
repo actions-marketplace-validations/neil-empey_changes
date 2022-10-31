@@ -7,12 +7,12 @@ inputs:
   repo:
     description: 'The name of the repository'
     required: true
-  branch:
-    description: 'The branch name'
-    required: false
+  pr_number:
+    description: 'The number of the pull request'
+    required: true
   token:
     description: 'The token to use to access the GitHub API'
     required: true
 runs:
   using: 'node16'
-  main: 'dist/index.js'
+  main: 'index.js'
