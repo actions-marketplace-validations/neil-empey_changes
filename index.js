@@ -15,6 +15,8 @@ const main = async () => {
             owner: owner,
             repo: repo,
         }))
+    } catch (error) {
+        core.setFailed(error.message);
     }
 
 }
