@@ -6,7 +6,7 @@ const main = async () => {
         const files = core.getInput('files', { required: true });
         const token = core.getInput('token', { required: true });
 
-        const big_change = core.setOutput('big_change', files)
+        const big_change = core.setOutput(files)
 
         const octokit = new Octokit({
             auth: token,
