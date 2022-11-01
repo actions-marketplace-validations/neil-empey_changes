@@ -7,6 +7,9 @@ inputs:
   token:
     description: 'User token'
     required: true
+outputs:
+  big_change:
+    description: 'Bool to indicate big UI change'
 runs:
   using: 'node16'
   main: 'index.js'
