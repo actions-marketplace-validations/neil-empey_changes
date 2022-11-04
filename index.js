@@ -1,8 +1,11 @@
 const core = require('@actions/core');
 
 async function run() {
-    const temp = core.getInput('temp');
-    console.log(`The temperature is ${temp} degrees.`);
+    const files = core.getInput('changed-files');
+    const emails = core.getInput('emails');
+
+    console.log(files);
+    console.log(emails);
 }
 
 run();
