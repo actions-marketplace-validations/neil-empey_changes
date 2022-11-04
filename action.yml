@@ -14,7 +14,7 @@ outputs:
   if-notified: # id of output
     description: 'bool, true if notify team'
 runs:
-  using: 'node18'
+  using: 'node16'
   main: 'dist/index.js'
 branding:
   icon: 'compass'
