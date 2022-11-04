@@ -1,10 +1,10 @@
 {
   "name": "changes",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "ncc build index.js -o dist --source-map"
   },
   "repository": {
     "type": "git",
@@ -12,7 +12,7 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/neil-empey/changes/issues"
   },
@@ -20,6 +20,12 @@
   "dependencies": {
     "@actions/core": "^1.10.0",
     "@actions/github": "^5.1.1",
+    "gray-matter": "^4.0.3",
+    "moment": "^2.29.4",
+    "recursive-readdir": "^2.2.3"
+  },
+  "description": "",
+  "devDependencies": {
     "@vercel/ncc": "^0.34.0"
   }
 }
