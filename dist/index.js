@@ -2822,9 +2822,20 @@ const core = __nccwpck_require__(186);
 async function run() {
     const files = core.getInput('changed-files');
     const emails = core.getInput('emails');
+    core.setOutput('if-notified', false);
 
-    console.log(files);
-    console.log(emails);
+    if (files.includes('No Changes')) {
+        let changedFiles = files.split(',');
+        fileTypeArray = ['html', 'css'];
+
+        for (let i = 0; i < changedFiles.length; i++) {
+            fileTypeArray.map(type => {
+                if (type.includes(changedFiles[i])) {
+                    core.setOutput('if-notified', true);
+                }
+            });
+        }
+    }
 }
 
 run();
