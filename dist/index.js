@@ -2820,8 +2820,11 @@ var __webpack_exports__ = {};
 const core = __nccwpck_require__(186);
 
 async function run() {
-    const temp = core.getInput('temp');
-    console.log(`The temperature is ${temp} degrees.`);
+    const files = core.getInput('changed-files');
+    const emails = core.getInput('emails');
+
+    console.log(files);
+    console.log(emails);
 }
 
 run();
