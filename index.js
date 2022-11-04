@@ -3,7 +3,7 @@ const core = require('@actions/core');
 async function run() {
     const files = core.getInput('changed-files');
     const emails = core.getInput('emails');
-    const notify = core.setOutput('notify', true);
+    core.setOutput('if-notified', false);
 
     if (files.includes('No Changes')) {
         let changedFiles = files.split(',');
@@ -12,7 +12,7 @@ async function run() {
         for (let i = 0; i < changedFiles.length; i++) {
             fileTypeArray.map(type => {
                 if (type.includes(changedFiles[i])) {
-                    notify(emails);
+                    core.setOutput('if-notified', true);
                 }
             });
         }
