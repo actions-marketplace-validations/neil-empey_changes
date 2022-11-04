@@ -1,33 +1,21 @@
-name: 'assign: major UI change'
-
-#**what it does** assigns/notifys UI team members of pending PR's
-#**why we have it** to get those responsible for UI to approve major changes
-on:
- push:
-    branches:
-      - main
-
-permissions:
-  contents: read
-  pull-requests: read
-
-concurrency:
-  group: '${{ github.workflow }} @ ${{ github.event.pull_request.head.label || github.head_ref || github.ref }}'
-  cancel-in-progress: true
-
-jobs:
-  check-links:
-    runs-on: ${{ fromJSON('["ubuntu-latest", "self-hosted"]')[github.repository == 'github/docs-internal'] }}
-    steps:
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-
-      - name: 'Get changed files'
-        id: changed-files
-        uses: tj-actions/changed-files@v34
-
-      - name: 'List all changed files'
-        uses: 'dist/index.js'
-          with:
-            temp: ${{ steps.changed-files.outputs.all_changed_files }}
+name: 'notify-UI'
+author: 'nempey@eventpower.com'
+description: 'If major UI changes notify frontend team'
+inputs:
+  changed-files:  # id of input
+    description: 'files that changed since last commit'
+    required: true
+    default: 'No Changes'
+  emails:
+    description: 'string of emails to send notification'
+    required: true
+    default: '0'
+outputs:
+  if-notified: # id of output
+    description: 'bool, true if notify team'
+runs:
+  using: 'node18'
+  main: 'dist/index.js'
+branding:
+  icon: 'compass'
+  color: 'green'
