@@ -5,7 +5,7 @@ async function run() {
     const emails = core.getInput('emails');
     let notify = false;
 
-    if (!files.includes('No Changes')) {
+    if (files.length > 0) {
         console.log('pizza')
         console.log(files, emails);
         let changedFiles = files.split(',');
