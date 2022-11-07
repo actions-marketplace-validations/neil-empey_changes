@@ -5,13 +5,13 @@ async function run() {
     const emails = core.getInput('emails');
     core.setOutput('if-notified', false);
 
-    if (files.includes('No Changes')) {
+    if (!files.includes('No Changes')) {
         let changedFiles = files.split(',');
         fileTypeArray = ['html', 'css'];
 
         for (let i = 0; i < changedFiles.length; i++) {
             fileTypeArray.map(type => {
-                if (type.includes(changedFiles[i])) {
+                if (changedFiles[i].includes(type)) {
                     core.setOutput('if-notified', true);
                 }
             });
