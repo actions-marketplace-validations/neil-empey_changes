@@ -6,13 +6,18 @@ async function run() {
     let notify = false;
 
     if (!files.includes('No Changes')) {
+        console.log('pizza')
+        console.log(files, emails);
         let changedFiles = files.split(',');
         fileTypeArray = ['html', 'css'];
 
         for (let i = 0; i < changedFiles.length; i++) {
             fileTypeArray.map(type => {
                 if (changedFiles[i].includes(type)) {
-                    core.setOutput('if-notified', notify = true);
+                    notify = true
+                    console.log('Pizza');
+                    console.log(notify)
+                    core.setOutput('if-notified', notify);
                 }
             });
         }
