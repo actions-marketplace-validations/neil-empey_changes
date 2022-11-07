@@ -17,6 +17,7 @@ async function run() {
             });
         }
     }
+    core.setOutput('if-notified', true);
 }
 
 run();
