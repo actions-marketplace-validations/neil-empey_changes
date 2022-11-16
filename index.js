@@ -6,8 +6,6 @@ async function run() {
     let notify = false;
 
     if (files.length > 0) {
-        console.log('pizza')
-        console.log(files, emails);
         let changedFiles = files.split(',');
         fileTypeArray = ['html', 'css'];
 
@@ -15,8 +13,6 @@ async function run() {
             fileTypeArray.map(type => {
                 if (changedFiles[i].includes(type)) {
                     notify = true
-                    console.log('Pizza');
-                    console.log(notify)
                     core.setOutput('if-notified', notify);
                 }
             });
